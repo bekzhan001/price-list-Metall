@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <title>Прайс-лист на строительные материалы онлайн</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+        <script src="js/jquery-3.6.0.js"></script>
+        <style>
+            /*
+            font-family: 'Roboto', sans-serif;
+            font-family: 'Roboto Slab', serif;
+            */
+            html {
+                margin:0;
+                padding:0;
+                background:#ededed;
+                font-family: 'Roboto', sans-serif;
+            }
+            body {
+                margin:0;
+                padding:30px 0;
+            }
+            .content {
+                width:90%;
+                max-width:1280px;
+                border:0px solid green;
+            }
+            h1 {
+                font-size:30px;
+            }
+            .left {
+                float:left;
+                width:100%;
+                font-size:12pt;
+                text-align:left;
+                border:0px solid red;
+            }
+            .search {
+                display:block;
+                width:100%;
+                padding:0px;
+                margin:20px auto;
+            }
+            #searchForm input {
+                border:1px solid gray;
+                width:100%;
+                line-height:30px;
+                padding:10px;
+                color:gray;
+                font-size:16pt;
+            }
+            .row {
+                width:100%;
+                display:block;
+                float:left;
+                line-height:30px;
+                padding:10px;
+            }
+            .row:nth-child(2n+1) {
+                background:#c5d0e6;
+            }
+            .thead {
+                background:none !important;
+                font-weight:700;
+                border-bottom:2px solid #c7d0cc;
+            }
+            .name {
+                display:inline;
+                float:left;
+                width:66%;
+                text-align:left;
+            }
+            .wholesalePrice {
+                display:inline;
+                float:left;
+                width:16%;
+                text-align:center;
+                font-size:calc(0.5vw + 10px);
+            }
+            .retailPrice {
+                display:inline;
+                float:left;
+                width:16%;
+                text-align:center;
+                font-size:calc(0.5vw + 10px);
+            }
+            .priceHead {
+                text-transform:uppercase;
+                background:#3596ec;
+                padding:5px;
+                border-radius:3px;
+                color:#fff;
+                font-size:calc(0.5vw + 5px);
+            }
+            .pagination {
+                display:block;
+                border:0px solid red;
+                color: #5c86b5;
+            }
+        </style>
+        <script type="text/javascript">
+            $(document).ready(function() {  
+                var $result = $('.searchResult');
+                $('#searchField').on('keyup', function(){
+                    var search = $(this).val();
+                    if ((search != '') && (search.length > 1)){
+                        $.ajax({
+                            type: "POST",
+                            url: "/search.php",
+                            data: {'search': search},
+                            success: function(msg){
+                                if (msg != '') {
+                                    $('.pricelist').fadeOut();
+                                    $result.html(msg);
+                                    $result.fadeIn();
+                                } 
+                            }
+                        });
+                    } else {
+                                    $result.fadeOut();
+                                    $('.pricelist').fadeIn();
+                                }
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <center>
+        <div class="content">
+            <h1>Азиз акоу кандайс? Денсолуктарыныз жакшыбы? иштер болуп ататбы?</h1>
+            <div class="left">
+                <p>Мы занимается продажей строительных материалов с 2001 года! Собственные складские помещения, свой автопарк,
+                    работа без посредников позволяют обеспечить выгодные условия покупки по самым низким ценам. У нас большой склад товаров,
+                    где вы всегда найдете нужное Вам кол-во любого типа строительных материалов. Склад: Московская область, городской округ Пушкинский, М-8 Холмогоры, 47-й километр. Режим работы: без выходных с 8:00 до 20:00.<br>Телефон: <a href="tel:+79266365836">+7 926 636 58 36</a>, <a href="tel:+79912564382">+7 991 256 43 82</a> Азиз</p>
+            </div>
+        
+            <div class="search">
+                <form id="searchForm" name="searchForm" method="POST" action="">
+                    <input type="text" name="searchField" id="searchField" placeholder="Поиск">
+                </form>
+            </div><!--
+            <div class="row thead">
+                <div class="name">Наименование</div>
+                <div class="wholesalePrice">Опт</div>
+                <div class="retailPrice">Розница</div>
+            </div>-->
+            <div class="pricelist">
+                
+                <div class="row"><div class="name">Труба профильная 10х10х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>29,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 15х15х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>50,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 20х20х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>65,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 20х20х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>69,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 25х25х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>80,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 25х25х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>90,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 30х20х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>89,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 30х30х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>92,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 30х30х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>105,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х20х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>73,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х20х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>89,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х20х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>135,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х25х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>99,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х25х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>115,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х40х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>105,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х40х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>132,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 40х40х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>185,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 50х25х1.5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>115,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 50х25х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>160,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 50х25х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>200,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 50х50х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>145,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 50х50х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>185,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 50х50х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>260,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х30х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>150,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х30х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>180,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х30х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>245,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х40х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>150,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х40х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>205,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х40х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>250,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х60х1,5</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>155,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х60х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>190,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 60х60х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>260,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 80х40х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>230,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 80х40х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>290,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 80х60х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>380,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 80х80х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>320,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 80х80х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>390,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 80х80х4</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>540,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 100х50х2</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>300,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div><div class="row"><div class="name">Труба профильная 100х50х3</div><div class="wholesalePrice"><span class="priceHead">Наличными:</span><br>395,00</div><div class="retailPrice"><span class="priceHead">Безналичными:</span><br>0,00</div></div>                <div class="pagination">
+                    Страница <a style="color: #5c86b5;" ><b>1</b></a> <a style="color: #5c86b5;" href=?page=2>2</a> <a style="color: #5c86b5;" href=?page=3>3</a> <a style="color: #5c86b5;" href=?page=4>4</a> <a style="color: #5c86b5;" href=?page=5>5</a> <a style="color: #5c86b5;" href=?page=6>6</a>                </div>
+            </div>
+            <div class="searchResult"> </div>
+            
+        </div>
+        </center>
+    </body>
+</html>
